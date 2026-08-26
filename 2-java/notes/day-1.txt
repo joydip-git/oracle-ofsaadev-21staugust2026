@@ -16,6 +16,68 @@ running:
 -----------------------------------------------------
 *.class (byte code) -> JIT compiler (runtime) -> MLL
 
+Data Types:
+-----------------------------------------
+primitive data types     user-defined primitive type???		reference types
+byte			  Enum					built-in user-defined
+short							        String, Object, Arrays
+int												
+long
+
+float
+double
+decimal????
+
+char
+Boolean
+
+
+
+menu
+---------------------
+1. Add
+2. Subtract
+3. Multiply
+4. Divide
+
+enter choice[1/2/3/4]: 1
+
+enter first value: 12
+enter second value: 13
+
+result of <op-name> is 25
+
+would you like to continue[y/Y/n/N]: y
+
+repeat....from menu
+
+1. print menu				: printMenu():void
+2. ask user for choice			: getChoice():int
+3. ask user to enter value (twice)	: getValue(message):int
+4. calculate				: calculate(choice.f,s):string
+5. display result			: displayResult(resultstring):void
+6. ask user for continuation		: askForContinuation():char
+
+
+add(f,s):int
+subtract()
+multiply()
+divide()
+
+
+class and object:
+------------------------
+
+
+	
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,27 @@
+library app: EntityLibrary
+com.payroll.entities
+
+developer
+	attributes: name, id, basic, da, hra, incentive, salary 
+	method:
+	a method to calculate the total salary and save in 'salary'
+	arguments: none
+	return type: none 
+hr
+	attributes: name, id, basic, da, hra, gratuity, salary
+	method:
+	a method to calculate the total salary and save in 'salary'
+	arguments: none
+	return type: none 
+
+console app:
+package: com.payroll.userinterface
+
+1. ask user for number of records
+2. create objects
+	a. ask user which record to create
+	b. ask user to enter values for that record
+	c. save the record in a storage (array)
+3. iterate through the storage and
+	a. calculate total salary of each record
+	b. print the same along with the name
