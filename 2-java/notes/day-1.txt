@@ -1,0 +1,21 @@
+Java:
+----------------
+OOP language
+type safe language
+application s/w
+
+JVM and JRE and JDK
+--------------------------
+JDK: Java Development Kit ( tools, java compiler, debugger etc.) - JRE + tools
+JRE: Java Runtime Environment (s/w - JVM + core libraries)
+JVM: Java Virtual Machine (abstract)
+
+Java (*.java) -> (javac) -> byte code (*.class)
+
+running:
+-----------------------------------------------------
+*.class (byte code) -> JIT compiler (runtime) -> MLL
+
+
+
+

@@ -1,0 +1,8 @@
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "d:\\training\\oracle-ofsaadev-21staugust2026\\2-java\\codes\\day-1\\MessengerLibrary\\MessengerLibrary.jar"
+    ]
+}

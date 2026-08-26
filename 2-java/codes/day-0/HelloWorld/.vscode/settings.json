@@ -3,6 +3,7 @@
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "d:\\training\\oracle-ofsaadev-21staugust2026\\2-java\\codes\\day-0\\MessengerLibrary\\bin\\oracle\\api\\MessengerLibrary.jar"
+        "d:\\training\\oracle-ofsaadev-21staugust2026\\2-java\\codes\\day-0\\MessengerLibrary\\bin\\oracle\\api\\MessengerLibrary.jar",
+        "d:\\training\\oracle-ofsaadev-21staugust2026\\2-java\\codes\\day-0\\MessengerLibrary\\MessengerLibrary.jar"
     ]
 }
