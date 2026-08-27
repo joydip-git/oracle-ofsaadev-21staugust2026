@@ -2,7 +2,7 @@ package com.payroll.userinterface;//TIP To <b>Run</b> code, press <shortcut acti
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 
 import com.payroll.entities.Employee;
-import com.payroll.utilities.*;
+import static com.payroll.utilities.PayrollUIUtility.*;
 
 import java.util.Scanner;
 
@@ -16,16 +16,16 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         //asking user for number of objects to create
-        int count = PayrollUIUtility.getRecordCount(scanner);
+        int count = getRecordCount(scanner);
 
         //creating a storage
         Employee[] employees = new Employee[count];
 
         //creating individual objects and saving the same in the storage
-        PayrollUIUtility.createAndSaveEmployee(employees, scanner);
+        createAndSaveEmployee(employees, scanner);
 
         //calculating and printing the salary of every employee
-        PayrollUIUtility.printSalary(employees);
+        printSalary(employees);
 
         //closing resource
         scanner.close();
