@@ -1,0 +1,301 @@
+1. Frequency Count
+	
+Count the frequency of different words in a sentence.
+
+a. Objective:
+To choose appropriate collection class for storing key/value pair.
+
+b. Problem Statement
+Write a program to create a list of words present in a sentence passed from command line. The list also contain count of the appearance of each word in that sentence. The program has to display the words in sorted order and its frequency.
+If the input is: “Java is technology and Java is interoperable and Java is simple”.
+Output should be:  [and = 2, interoperable = 1, is = 3,java =3, oop =1, simple =1]
+
+2. Sort String based on length
+Generally strings are compared alphabetically in lexical order, sometimes we need to compare them may be in reverse order or which is the shortest or longest string.
+
+a. Objective 
+To develop the capability for selecting the right interface to implement the user defined sorting algorithm.
+
+b. Problem Statement
+Define a sorting mechanism for Strings that compared them by length. So, when we sort the Strings, the result is based on the length of the String
+
+3. Sort Product Collection
+Refer any online shopping portal,  the products will be displayed in some order. The user interface displays the products sorted by brand or by price.
+
+a. Objective 
+Sorting user defined entity classes based on runtime requirement.
+
+b. Problem Statement
+Create an Entity class to hold the following data. You need to choose an appropriate collection to hold it.
+
+Product ID	Brand Name	Description	Price
+------------------------------------------------------------
+200		Dell		15 inch Monitor	3400.44
+120		Dell		Laptop		45000.00
+150		Microsoft	Windows 7	7000.50
+100		Logitech	Optical Mouse	540.00
+
+Write a program to perform the following operations
+1. Stores the collections of the data shown above
+2. An operation to display all the products in a sorted order by default based on their product id.
+3. Option for sorting based on Brand name or price based on input provided at runtime.
+	a. If two products contain same brand name, description should be considered.
+	b. Similarly if products have same price, product id’s should be considered while displaying them in order
+
+Sample Output if Sorted by Brand Name:
+Product ID	Brand Name	Description	Price
+200		Dell		15 inch Monitor	3400.44
+120		Dell		Laptop		45000.00
+100		Logitech	Optical Mouse	540.00
+150		Microsoft	Windows 7	7000.50
+
+
+4. Press Release Application
+It is an interesting application about how media/press releases the news
+
+a. Objective: 
+Understand how events are used with the help of method reference. 
+
+b. Problem Statement: 
+
+TNN (Times News Network) publishes press releases throughout India and World through World News and National News. Each and every subscriber can get the news (press releases) through them, provided they subscribe to the TNN, either World News unit or National News unit.
+Create an application through which any subscriber, by subscribing to any of those units, can get the current news from TNN.
+
+Hint: You need to create an entity/class called TNN with two features, WorldNews and NationalNews. Publication is done through these two. The argument of press release should contain the description of the press release (Report). Finally, each and every subscriber should be represented by an entity, which will receive press release by subscribing some method.
+
+5. Functional Programming:
+
+A. Following is a string of words:
+string[] words = { "Animal","Grapes","Pearl","Grain","Apple","Pineapple" };
+Group the above words by their first letter
+
+expected output format:
+words that start with the letter 'A': Animal Apple
+....
+
+B. Produce a sequence of strings representing the text version of a sequence of integers.
+int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 }
+string[] strings = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" }
+
+Expected Output:
+
+Number Strings:
+five
+four
+one
+three
+nine
+eight
+six
+seven
+two
+zero
+
+C. Sort a list of digits first by length of their name, and then alphabetically by the name itself
+string[] digits = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" }
+Expected Output:
+
+sorted digits:
+one
+six
+two
+five
+four
+nine
+zero
+eight
+seven
+three
+
+
+D. Create one sequence that contains the unique values from both arrays:
+int[] numbersA = { 0, 2, 4, 5, 6, 8, 9 }
+int[] numbersB = { 1, 3, 5, 7, 8 }
+
+Expected output:
+unique numbers from both arrays:
+0
+2
+4
+5
+6
+8
+9
+1
+3
+7
+
+
+Basics:
+1. Fibonacci Series:
+
+In mathematics, the Fibonacci numbers are the numbers in the following integer sequence:
+0,1,1,2,3,5,8,13,21,34,…
+
+By definition, the first two Fibonacci numbers are 0 and 1, and each subsequent number is the sum of the previous two.
+
+In mathematical terms, the sequence Fn of Fibonacci numbers is defined by the recurrence relation
+
+Fn = Fn-1 + Fn-2; with initial values F0 = 0 and F1 = 1.
+
+Objective:
+Understand how to write a recursive function.
+
+Write a method "Fibonacci()" that takes some integer has a parameter and returns the nth fibonacci number, where we think of the first 1 as the first Fibonacci number. Thus, an invocation of fibonacci (6) should return 8, and in invocation of fibonacci (10) should return 55
+
+
+N		0	1	2	3 	4	5	6	7	8	9
+Nth Fibonacci	0	1	1	2	3	5	8	13	21	34
+
+2. Compound Interest:
+---------------------------
+Compound interest arises when interest is added to the principal, so that from that moment on, the interest that has been added also it earns interest. This addition of interest to the principal is called compounding. A bank account, for example, may have its interest compounded every year: in this case, an account with $1000 initial principal and 20% interest per year would have a balance of $1200 at the end of the first year, $1440 at the end of the second year, and so on.
+
+Objective:
+Understand which type of loop to use.
+
+Problem Statement:
+You deposit INR. 1000.00 in the bank account at 5% annual compound interest. The interest is paid once at the end of the year. What if you are interested in becoming a millionaire (Rs 1000000.00)? How long will it take to reach one million?
+
+Year			Interest for the year		End of the year amount
+1			1000*0.05=50			1050.00
+2			1050*0.05=52.5			1102.50
+3			1102.50*0.05=55.125		1157.625
+
+3. Credit card bill 
+Objective:
+Understand which type of loop to use. 
+
+Problem Statement:
+You owe the credit card company 1000.00 rupee. The company charges you 1.5% per month on the unpaid balance. You have decided to stop using the card and to pay off the debt by making a monthly payment of N rupee a month. Write a program that asks for the monthly payment, the program writes out the balance and total payments so far for every succeeding month until the balance is zero or less.
+
+Sample Input:
+Enter the monthly payment: 100
+Sample Output:
+Month: 1 balance: 915.0 total payments: 100.0
+Month: 2 balance: 828.725 total payments: 200.0
+Month: 3 balance: 741.155875 total payments: 300.0
+
+4. Mileage: 
+Objective:
+Understand which control flow statements and operators. 
+
+Problem Statement:
+Write a program to evaluate the fuel consumption of a car. The mileage at the start and end of the journey should be read, and also the fuel level in the tank at the start and end of the journey.
+
+Calculate fuel used, kilo meters travelled, and hence the overall fuel consumption in kilo meters travelled per liter of fuel.
+
+Sample Input:	
+Fuel Level at start of journey: 30 Liters
+Fuel Level at end of journey: 20 Liters
+Mileage reading at Start of journey: 24,500
+Mileage reading at end of journey: 24,650
+
+Sample Output:
+Total fuel used : 10 Liters
+Distance covered: 150 Km
+Mileage / Liter: 15 Km
+
+Sample Input:
+Fuel Level at start of journey: 12 Liters
+Fuel Level at end of journey: 4 Liters
+Mileage reading at Start of journey: 12,000
+Mileage reading at end of journey: 12,100
+
+Sample Output:
+Total fuel used : 8 Liters
+Distance covered: 100 Km
+Mileage / Liter: 12.5 Km
+
+Sample Input:
+Fuel Level at start of journey: 30 Liters
+Fuel Level at end of journey: 29 Liters
+Mileage reading at Start of journey: 42,000
+Mileage reading at end of journey: 42,009
+
+Sample Output:
+Trip too short for ac-curate results
+
+Note: The message “Trip too short for accurate results” should be printed if the mileage used to calculate the fuel consumption is less than 10 kilo meters
+
+5. Student Results: 
+Objective:
+Understand which control flow statements and operators. 
+
+Problem Statement:
+Percentage marks attained by a student in three exams are to be entered to a computer. An indication of Pass or Fail is given out after the three marks are entered.
+The criteria for passing are as follows:
+A student passes if all three examinations are passed.
+Additionally a student may pass if only one subject is failed and the overall average is greater than or equal to 50.
+The pass mark for an individual subject is 40
+
+
+UTC-01
+Sample Input
+
+Marks in First Subject: 89
+Marks in Second Subject: 55
+Marks in third subject: 99
+
+Sample Output
+
+PASS
+
+UTC-02
+Sample Input:
+
+Marks in First Subject: 32
+Marks in Second Subject: 45
+Marks in third subject: 90
+
+Sample output:
+PASS
+
+UTC-03
+Sample Input:
+
+Marks in First Subject: 22
+Marks in Second Subject: 65
+Marks in third subject: 90
+
+Sample output:
+PASS
+
+UTC-04
+Sample Input:
+Marks in First Subject: 22
+Marks in Second Subject: 25
+Marks in third subject: 20
+
+Sample Output:
+FAIL
+
+
+6. Matrix Arrangement: 
+
+Objective:
+Understand how to use arrays. 
+
+Problem Statement:
+Write a function to return an array where the midst position contains the smallest value followed by the next smallest value on the right of the midst position, followed by the next smallest value to the left of the midst position and the rest of numbers continue in this format
+
+Function signature:
+public static int[ ] arrangeElements(int[][] inputArray)
+{
+// write the code here
+}
+
+UTC-01
+input:
+
+4	2	13
+3	8	5
+9	6	17
+
+result: {17,9,6,4,2,3,5,8,13}
+
+4	1	3
+3	8	5
+4	16	17
+
+result: {17,8,4,3,1,3,4,5,16}
