@@ -29,4 +29,31 @@ public class Student extends Person {
     public String toString() {
         return super.toString() + ", Marks=" + marks;
     }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode() * (int) marks;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj))
+            return false;
+        Student student = (Student) obj;
+        return this.marks == student.marks;
+    }
+
+//    @Override
+//    public int compareTo(Person o) {
+//        if (o == null)
+//            return 0;
+//        if (o instanceof Student) {
+//            if (this.getName().compareTo(o.getName()) == 0)
+//                return Double.compare(this.marks, ((Student) o).marks);
+//                //return (int)(this.marks - ((Student) o).marks);
+//            else
+//                return this.getName().compareTo(o.getName());
+//        }
+//        return -1;
+//    }
 }
