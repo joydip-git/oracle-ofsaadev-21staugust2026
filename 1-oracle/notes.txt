@@ -1,0 +1,49 @@
+departments:
+----------------------
+depratment_id (pk)
+department_name
+employee_count
+
+
+employees:
+-------------------
+employee_id (pk)
+employee_name
+employee_salary
+department_id (fk) not null
+
+events of db:
+-------------------
+DDL related events: CREATE, DROP, ALTER
+DML related events: INSERT, UPDATE, DELETE 
+Database operations: LOGON, LOGOFF, STARTUP, SHUTDOWN
+
+triggers:
+-----------------
+
+
+before or after trigger:
+-------------------
+insert
+delete
+update
+
+instead of trigger and view:
+------------------------------------
+create a view which produces the a result set that includes following column values from both categories and products table:
+category_name, product_name, product_code, product_price, rating, description, image, category_id 
+using inner join
+
+insert record for those columns through an 'instead of trigger' into categories and products table
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,29 @@
+Collection classes and interfaces
+
+Set -> override 
+	a. hashCode()
+	b. equals()
+	in the type
+
+sorting:
+	1. interlization of sorting: int compareTo(T o)
+		implement Comparable<T> interface in the type:
+		method: int compareTo(T o);
+
+	2. externalization of sorting:
+		create a separate class and implement Comparator<T> interface
+		method: int compare(T x, T y);
+
+fn(int num):Boolean
+
+Predicate<TInput> => Boolean test(TInput val);
+Consumber
+
+
+
+
+
+
+
+
+
