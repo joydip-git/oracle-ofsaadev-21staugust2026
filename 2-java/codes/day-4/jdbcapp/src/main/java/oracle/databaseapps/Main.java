@@ -4,26 +4,62 @@ import oracle.databaseapps.dao.abstractions.Repository;
 import oracle.databaseapps.dao.implmentations.ProductRepository;
 import oracle.databaseapps.dto.ProductDTO;
 
+import java.io.IOException;
 import java.sql.*;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
         Repository<ProductDTO, Integer> repository = null;
         try {
             repository = new ProductRepository();
-            Collection<ProductDTO> products = repository.getAll();
-            if (!products.isEmpty()) {
-                products.forEach(System.out::println);
-            } else {
-                System.out.println("no products found");
-            }
+            showAllProducts(repository);
+            //showProduct(repository);
+            //addRecord(repository);
+            //updateRecord(repository);
+            //deleteRecord(repository.delete(21), "could not delete");
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private static void deleteRecord(ProductDTO repository, String x) throws Exception {
+        var deleted = repository;
+        System.out.println(deleted != null ? deleted : x);
+    }
+
+    private static void updateRecord(Repository<ProductDTO, Integer> repository) throws Exception {
+        deleteRecord(repository.update(21, new ProductDTO(0, "sample-1",
+                100.00, "sample-1234", null,
+                LocalDate.now(), null, 1, 100)), "could not update");
+    }
+
+    private static void addRecord(Repository<ProductDTO, Integer> repository) throws Exception {
+        var data = new ProductDTO(0, "iphone 1516", 150000.00,
+                "phone-1324", "new mobile from apple"
+                , LocalDate.now(), null, 4.5, 101);
+        var added = repository.add(data);
+        System.out.println(added != null ? data : "not added");
+    }
+
+    private static void showProduct(Repository<ProductDTO, Integer> repository) throws SQLException, ClassNotFoundException, IOException {
+        ProductDTO record = repository.get(1);
+        System.out.println(record != null ? record : "product not found");
+    }
+
+    private static void showAllProducts(Repository<ProductDTO, Integer> repository) throws SQLException, ClassNotFoundException, IOException {
+        Collection<ProductDTO> products = repository.getAll();
+        if (!products.isEmpty()) {
+            products.forEach(System.out::println);
+        } else {
+            System.out.println("no products found");
         }
     }
 

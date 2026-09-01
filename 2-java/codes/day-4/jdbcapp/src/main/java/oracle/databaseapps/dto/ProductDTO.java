@@ -1,6 +1,6 @@
 package oracle.databaseapps.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class ProductDTO {
     private int productId;
@@ -8,7 +8,7 @@ public class ProductDTO {
     private double productPrice;
     private String productCode;
     private String description;
-    private Date releaseDate;
+    private LocalDate releaseDate;
     private byte[] image;
     private double rating;
     private int categoryId;
@@ -18,7 +18,7 @@ public class ProductDTO {
 
     public ProductDTO(int productId, String productName,
                       double productPrice, String productCode,
-                      String description, Date releaseDate,
+                      String description, LocalDate releaseDate,
                       byte[] image, double rating, int categoryId) {
         this.productId = productId;
         this.productName = productName;
@@ -71,11 +71,11 @@ public class ProductDTO {
         this.description = description;
     }
 
-    public Date getReleaseDate() {
+    public LocalDate getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(Date releaseDate) {
+    public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
     }
 
@@ -105,7 +105,8 @@ public class ProductDTO {
 
     @Override
     public String toString() {
-        return "Name=" + productName
+        return "Id=" + productId
+                + "Name=" + productName
                 + ", Price=" + productPrice
                 + ", Code: " + productCode
                 + ", Released On=" + (releaseDate == null ? "NA" : releaseDate.toString());
