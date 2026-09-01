@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Collection;
 
-public interface Repository<T, TKey> {
+public interface DbRepository<T, TKey> {
     T add(T data) throws Exception;
 
     T delete(TKey id) throws Exception;

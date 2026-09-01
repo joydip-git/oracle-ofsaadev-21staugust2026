@@ -1,6 +1,7 @@
 package oracle.databaseapps;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -20,6 +21,8 @@ public class App {
     }
 
     static ApplicationContext createContext() {
-        return new ClassPathXmlApplicationContext("beans.xml");
+        // return new ClassPathXmlApplicationContext("beans.xml");
+        //return new AnnotationConfigApplicationContext(BeanConfig.class);
+        return new AnnotationConfigApplicationContext("oracle.databaseapps");
     }
 }

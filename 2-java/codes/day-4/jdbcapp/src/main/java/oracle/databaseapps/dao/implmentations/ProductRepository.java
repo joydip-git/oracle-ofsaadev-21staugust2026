@@ -1,22 +1,19 @@
 package oracle.databaseapps.dao.implmentations;
 
-import oracle.databaseapps.dao.abstractions.Repository;
+import oracle.databaseapps.dao.abstractions.DbRepository;
 import oracle.databaseapps.dto.ProductDTO;
+import org.springframework.stereotype.Repository;
 
-import javax.swing.plaf.nimbus.State;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
-import java.time.Instant;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
 
-public class ProductRepository implements Repository<ProductDTO, Integer> {
+@Repository
+public class ProductRepository implements DbRepository<ProductDTO, Integer> {
 
     @Override
     public ProductDTO add(ProductDTO data)
