@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="firstStudent" class="oracle.databaseapps.Student">
+        <constructor-arg name="id" type="int" value="1" index="0">
+        </constructor-arg>
+        <constructor-arg name="name" type="String" value="anil" index="1">
+        </constructor-arg>
+        <constructor-arg name="marks" type="double" value="86" index="2">
+        </constructor-arg>
+    </bean>
+
+    <bean id="secondStudent" class="oracle.databaseapps.Student">
+        <property name="id" value="2">
+        </property>
+        <property name="name" value="sunil">
+        </property>
+        <property name="marks" value="98">
+        </property>
+    </bean>
+
+    <bean id="managerBean" class="oracle.databaseapps.Employee">
+        <constructor-arg index="0" name="id" type="int" value="1">
+        </constructor-arg>
+        <constructor-arg index="1" name="name" type="String" value="Sumit">
+        </constructor-arg>
+        <constructor-arg index="2" name="manager" type="oracle.databaseapps.Employee">
+            <null/>
+        </constructor-arg>
+    </bean>
+
+    <bean id="employeeBean" class="oracle.databaseapps.Employee">
+        <constructor-arg index="0" name="id" type="int" value="2">
+        </constructor-arg>
+        <constructor-arg index="1" name="name" type="String" value="joydip">
+        </constructor-arg>
+        <constructor-arg index="2" name="manager" type="oracle.databaseapps.Employee">
+            <ref bean="managerBean"/>
+        </constructor-arg>
+    </bean>
+</beans>
