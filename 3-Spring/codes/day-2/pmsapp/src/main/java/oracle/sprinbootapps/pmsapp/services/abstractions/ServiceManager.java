@@ -12,4 +12,6 @@ public interface ServiceManager<TCommand, TQuery, Id> {
     TQuery get(Id id);
 
     TQuery update(Id id, TCommand data);
+
+    Collection<TQuery> filter(String name);
 }
