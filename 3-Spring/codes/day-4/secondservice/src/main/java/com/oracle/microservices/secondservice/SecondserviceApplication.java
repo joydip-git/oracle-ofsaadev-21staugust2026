@@ -1,4 +1,4 @@
-package com.oracle.microservices.firstservice;
+package com.oracle.microservices.secondservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class FirstserviceApplication {
+public class SecondserviceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FirstserviceApplication.class, args);
+		SpringApplication.run(SecondserviceApplication.class, args);
 	}
 
 }
