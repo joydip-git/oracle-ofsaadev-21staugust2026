@@ -4,6 +4,7 @@ import com.oracle.security.authdaodemo.filters.JwtSecurityFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -26,7 +27,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import java.util.function.Supplier;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity(debug = true)
 public class SecurityConfig {
 
     @Autowired
@@ -48,12 +49,11 @@ public class SecurityConfig {
                 .csrf(config -> config.disable())
                 .authorizeHttpRequests(request ->
                         request
-                                .requestMatchers("/api/auth/**")
+                                .requestMatchers(HttpMethod.POST, "/api/auth/**")
                                 .permitAll()
                                 .requestMatchers("/api/home/**")
                                 .authenticated())
                 .sessionManagement(sessionConfigurer)
-                .formLogin(Customizer.withDefaults())
                 .addFilterBefore(
                         jwtSecurityFilter,
                         UsernamePasswordAuthenticationFilter.class
