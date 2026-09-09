@@ -1,0 +1,219 @@
+Docker:
+	a containerization tool
+	it helps you create an image based on the app, containing the code of the app, the dependencies, the configuration files etc.
+	then based on the image, a container is created to run the app using that image
+
+
+Scaling up:
+	1. purchase more machines and run one copy of your app in every machine.
+	2. use VMs. each and every VM will run one copy of your app.
+
+O/S => Core of the O/S (core services are offered - file management APIs)
+		 -> Kernel
+	at the top of the Kernel other services will be present
+
+docker desktop/rancher desktop for windows
+
+1. docker engine (docker d)
+2. docker CLI tool
+3. docker compose tool 
+4. docker swarm
+
+
+Windows and Mac O/S -> had/s no support for containerization
+
+Docker is meant for Linux
+
+Windows 10/11 -> Windows Sub-system for Linux
+
+Windows O/S -> Windows O/S kernel + Linux Kernel
+
+Linux Distros => 
+
+VMM -> Hypervisor
+
+Node JS -> should be installed in the target/dev machine
+app dependency -> express js
+
+container -> process (Linux)
+	files and configurations from???
+	share the same config/env between containers???
+
+image: standardized package -> all files, binaries, libraries, configurations to run in a container
+
+1. immutable
+2. layers
+
+
+
+install node js 21 in the container
+create a directory in the target machine restapp
+copy package.json file
+open terminal and move to the restapp dir
+run the command >npm install
+copy the src directory to restapp
+in the terminal run the command >node ./src/index.js
+
+
+container will run the the top of WSL
+every container will have a very thin layer of Linux distro (mainly Debian)
+when your dokcrefile pulls a base image (node, jdk 17, .net8, python...), that pulls the thin O/S layer image of Linux dsitro
+
+# this isn't used for the official published images anymore, but is included for backwards compatibility
+# see https://github.com/docker-library/bashbrew/issues/51
+FROM scratch
+ADD oci/blobs/rootfs.tar.gz /
+CMD ["bash"]
+....
+.....
+docker build -t restapp:v1 .
+docker images
+docker image ls
+docker image history restapp:v1
+
+docker run --name restappcontainer -p 4000:3000 restapp:v1
+note: by default docker container in run in attached mode
+
+dethatched mode: docker run -d --name restappcontainer -p 4000:3000 restapp:v1
+
+docker start restappcontainer
+Note: it starts the container in detatched mode by default
+
+to start in attached mode:
+docker start restappcontainer -a
+
+to show the previous logs of the container
+docker logs restappcontainer
+
+docker logs restappcontainer --follow (for all logs old+future)
+Note: the container will be in attached mode
+
+image is collection of layers about file system instruction
+one layer seats at the top of another
+
+remove image: docker rmi restapp:v1
+
+clean up the build cache:
+ docker buildx prune -a
+
+inspect a container details
+---------------------------
+ docker container inspect feedbackcont
+
+container will be removed when stop because you used --rm flag
+docker run -d --rm --name feedbackcont -p 3001:3000 feedbackapp:v1
+
+
+
+IMAGE          CREATED         CREATED BY                                      SIZE      COMMENT
+6d532799397d   2 minutes ago   CMD ["node" "./src/index.js"]                   0B        buildkit.dockerfile.v0
+<missing>      2 minutes ago   COPY ./src . # buildkit                         223B      buildkit.dockerfile.v0
+<missing>      2 minutes ago   RUN /bin/sh -c npm install # buildkit           9.39MB    buildkit.dockerfile.v0
+<missing>      2 minutes ago   COPY package.json . # buildkit                  299B      buildkit.dockerfile.v0
+<missing>      2 minutes ago   WORKDIR /restapp                                0B        buildkit.dockerfile.v0
+<missing>      9 days ago      CMD ["node"]                                    0B        buildkit.dockerfile.v0
+<missing>      9 days ago      ENTRYPOINT ["docker-entrypoint.sh"]             0B        buildkit.dockerfile.v0
+<missing>      9 days ago      COPY docker-entrypoint.sh /usr/local/bin/ # …   388B      buildkit.dockerfile.v0
+<missing>      9 days ago      RUN /bin/sh -c apk add --no-cache --virtual …   5.37MB    buildkit.dockerfile.v0
+<missing>      9 days ago      ENV YARN_VERSION=1.22.22                        0B        buildkit.dockerfile.v0
+<missing>      9 days ago      RUN /bin/sh -c addgroup -g 1000 node     && …   154MB     buildkit.dockerfile.v0
+<missing>      9 days ago      ENV NODE_VERSION=24.7.0                         0B        buildkit.dockerfile.v0
+<missing>      7 weeks ago     CMD ["/bin/sh"]                                 0B        buildkit.dockerfile.v0
+<missing>      7 weeks ago     ADD alpine-minirootfs-3.21.4-x86_64.tar.gz /…   7.82MB    buildkit.dockerfile.v0
+
+Dcoker storage:
+------------------------------------------------------------
+1. docker container read-write thin layer (temporary)
+when docker container is removed the thin layer is also gone along with all data
+just stopping the container does not remove the file system
+
+2. mounts
+	- docker volume/volume
+		its controlled by docker 
+		it will not be present in the host machine file system
+		container removal has no effect on those volumes until and unless you remove the volume 
+		a. manually or 
+		b. while creating and running a docker container using flag --rm. --rm flag if used, when container is stopped it will be removed automatically too. (in case of anonymous volumes)
+
+		types of volumes
+			- named volume
+			- anonymous volumes: created every time you create a new container (even with same image). this also can be shared with another.
+	
+	- bind mount
+	- temporary file system (tmpfs)
+
+/app/feedback => 
+/var/lib/docker/volu...11d319359f5/_data
+
+/app/temp =>
+
+ docker volume remove 630988bc20cbb0e0da7872d37daf0b059c8124f205eb74da5a77ba58f2b639e4
+
+docker volume prune -a
+
+
+docker run -d -v "D:/training/oracle-training-23rdjuly2025/11-docker_kubernetes/codes/docker-apps/data-volumes-app/pages:/app/pages" -v feedbackvolume:/app/feedback -v /app/temp --tmpfs /app/node_modules --name feedbackcont2 -p 3002:3000 feedbackapp:v1
+
+environment variables:
+-------------------------------
+1. via dockerfile
+2. via docker CLI
+	- docker run -d --rm -p 3000:3000 -e PORT=3000 --name feedbackapp feedbackapp:v1 [directly passing env data]
+	- docker run -d --rm -p 3000:3000 --env-file ./.env --name feedbackapp feedbackapp:v1 [passing via env file]
+
+network:
+---------------------
+1. containerized app to www -> yes (no restriction)
+
+2. from outside docker (host machine) to a containerized app in docker (map internal port number of containerized app from inside docker to the host machine port using -p flag, ex. -p 3000:3000)
+	
+3. containerized app to containerized app in the doccker
+	- using the container IP address (which is not guaranteed to be stable)
+	mongodb://172.18.0.2:27017/swfavorites
+
+	- create a docker network, connect all containerized app to the same and then use the container name as IP address (domain name), since docker network exposes the containerized apps through DNS names, same as that of the container name
+	mongodb://<mongodb-container-name>:27017/swfavorites
+
+4. containerized app to any service running on local/host machine: 
+	use in the code "host.docker.internal:<port>"
+ex: mongodb://host.docker.internal:27017/swfavorites
+
+
+mongodb://172.18.0.2:27017
+
+if you connect to a network (under bridge driver)
+DNS name = name of container itself
+also every container has an unique IP address
+
+docker run -p 3000:3000 --name favapp --network fav-net favapp:v1
+
+
+docker compose tool creates a network under bridge driver by default and connects all services with it and exposes the services via DNS names which are same as that of the container-name
+
+aws
+azure
+google 
+
+Kuberentes => 
+	open source => 
+
+.yaml file => configuration
+
+kubectl
+
+
+type determines how the Service is exposed. 
+Defaults to ClusterIP. 
+Valid options are 
+	ExternalName, 
+	ClusterIP, 
+	NodePort, and 
+	LoadBalancer. 
+"ExternalName" maps to the specified externalName. "ClusterIP" allocates a cluster-internal IP address for load-balancing to endpoints. Endpoints are determined by the selector or if that is not specified, by manual construction of an Endpoints object. If clusterIP is "None", no virtual IP is allocated and the endpoints are published as a set of endpoints rather than a stable IP. "NodePort" builds on ClusterIP and allocates a port on every node which routes to the clusterIP. "LoadBalancer" builds on NodePort and creates an external load-balancer (if supported in the current cloud) which routes to the clusterIP.
+	
+
+
+	
+
+
+
